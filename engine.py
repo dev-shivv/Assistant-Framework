@@ -1,10 +1,8 @@
 import re
-import actions as logic
+import actions as ac
 
-
-
-while True:
-    command = input("Input Command :").lower().strip()
+def parse(command):
+    
     match_query = re.search(r"play (.+) on youtube", command)
     match_query2 = re.search(r"search (.+) on google", command)
     match_query3 = re.search(r"open gemini", command)
@@ -13,43 +11,50 @@ while True:
     match_query6 = re.search(r"open spotify", command)
     match_query7 = re.search(r"open github", command)
     match_query8 = re.search(r"open youtube", command)
-
-
-
-
-
     if match_query:
         query = match_query.group(1)
-        logic.play_youtube(query)
-
+        ac.play_youtube(query)
+        return "Opening yt"
+ 
+ 
     elif match_query2:
         query = match_query2.group(1)
-        logic.search_web(query)
+        ac.search_web(query)
+        return "Opening YouTube...."
     
     elif match_query3:
         # query = match_query3.group(1)
-        logic.open_google_gemini()
+        ac.open_google_gemini()
+        return "Opening YouTube...."
 
     elif match_query4:
         # query = match_query4.group(1)
-        logic.open_claude()
+        ac.open_claude()
+        return "Opening YouTube...."
 
     elif match_query5:
         # query = match_query5.group(1)
-        logic.open_chatgpt()
+        ac.open_chatgpt()
+        return "Opening YouTube...."
 
     elif match_query6:
         # query = match_query6.group(1)
-        logic.open_spotify()
+        ac.open_spotify()
+        return "Opening YouTube...."
 
     elif match_query7:
         # query = match_query7.group(1)
-        logic.open_github()
+        ac.open_github()
+        return "Opening YouTube...."
 
     elif match_query8:
         # query = match_query8.group(1)
-        logic.open_youtube()
+        ac.open_youtube()
+        return "Opening YouTube...."
+
 
 
     else:
         print("Invalid Command")
+        return "Opening YouTube...."
+            
