@@ -1,54 +1,102 @@
+import os
 import sys
-import engine
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel
+#from engine import Parser as PS
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel, QTextEdit, QHBoxLayout
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Property
+from PySide6.QtGui import QColor
 
-app = QApplication(sys.argv)
-main_window = QMainWindow()
-main_window.setWindowTitle("Assistant Sh1v")
+class MainWindow(QMainWindow):
 
-central_canvas = QWidget()
-main_window.setCentralWidget(central_canvas)
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Assistant Sh1v")
+        central_canvas = QWidget()
+        self.setCentralWidget(central_canvas)
+        layout = QVBoxLayout(central_canvas)
 
-layout = QVBoxLayout(central_canvas)
-    
-    
-input_area = QLineEdit()
-input_area.setPlaceholderText("Input Your Command Here...")
-    
-    
-result_label = QLabel(" ")
 
-result_label.setStyleSheet("color: red;")
-    
-def command_handle():
-    try:
-        command = input_area.text()
-        result_label.setText(f"Input: {command}")
+        self.input_area = QLineEdit()
+        self.input_area.setPlaceholderText("Input Your Command Here...")
+#        self.input_area.returnPressed.connect(self.command_handle)
 
-        result = engine.parse(command)
+        self.terminal = QTextEdit()
+        self.terminal.setReadOnly(True)
+        self.terminal.setPlaceholderText("Sh1v's' Terminal...")
 
-        result_label.setText(result)
-    except Exception as e:
-        result_label.setText(str(e))
-    
-send_button = QPushButton("Run")
-send_button.setEnabled(True)
-send_button.clicked.connect(command_handle)
-    
-send_button.setStyleSheet("""QPushButton:pressed { background-color: red;}""")
+        self.send_button = QPushButton("Run")
+        self.send_button.setEnabled(True)
+#        self.send_button.clicked.connect(self.command_handle)
+        self.mic_button = QPushButton("🎙")
+        self.settings_button = QPushButton("⚙️")
 
-layout.addWidget(result_label)
-layout.addWidget(input_area)
-layout.addWidget(send_button)
+        self.send_button.setStyleSheet("""QPushButton:pressed { background-color: red;}""")
+        #--------—-------—
+        columns = QHBoxLayout()
 
+        left_panel = QVBoxLayout()
+        self.client_name = QLabel("Assistant Sh1v")
+        self.client_name.setFixedSize(225, 50)
+        self.client_name.setObjectName("name_pannel")
+        self.weather_label = QLabel("Weather Label Here")
+        self.weather_label.setObjectName("weather_panel")
+        self.time_label = QLabel("Time Label Here")
+        self.time_label.setObjectName("time_panel")
+        left_panel.addWidget(self.client_name)
+        left_panel.addWidget(self.weather_label)
+        left_panel.addWidget(self.time_label)
+
+        center_panel = QVBoxLayout()
+        self.web_search = QLineEdit()
+        self.web_search.setPlaceholderText("Enter Your Browser Query Here...")
+        self.web_search.setObjectName("search_bar")
+        self.chat_area = QTextEdit()
+        self.chat_area.setReadOnly(True)
+        self.chat_area.setObjectName("chat_area")
+        center_panel.addWidget(self.web_search)
+        center_panel.addWidget(self.chat_area)
+
+        right_panel = QHBoxLayout()
+        self.terminal.setObjectName("terminal")
+        right_panel.addWidget(self.terminal)
+
+        columns.addLayout(left_panel, 2)
+        columns.addLayout(center_panel, 5)
+        columns.addLayout(right_panel, 3)
+
+        bottom_bar = QHBoxLayout()
+        self.username = QLabel("@Shivam")
+        self.username.setObjectName("profile")
+        bottom_bar.addWidget(self.username)
+        bottom_bar.addWidget(self.input_area)
+        bottom_bar.addWidget(self.send_button)
+        bottom_bar.addWidget(self.mic_button)
+        bottom_bar.addWidget(self.settings_button)
+
+        layout.addLayout(columns)
+        layout.addLayout(bottom_bar)
+        #——–----------------
+
+    def log(self, message):
+        self.terminal.append(f"》》 {message}")
+        
+#    def command_handle(self):
+#       try:
+#            command = self.input_area.text()
+            #(f"Input: {command}")
+#            result = PS.parse(command)
+ #           self.log(result)
+  #      except Exception as e:
+   #         self.log(str(e))
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-qss_path = os.path.join(current_dir, "style.qss")
+qss_path = os.path.join(current_dir, "StyleSheet.qss")
 
-if os.path.exists(qss_path):
-    with open(qss_path, "r") as file:
-        app.setStyleSheet(file.read())
-
-main_window.show()
-sys.exit(app.exec())
-
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    if os.path.exists(qss_path):
+        with open(qss_path, "r") as file:
+            app.setStyleSheet(file.read())
+    main_window = MainWindow()
+    # main_window.setCentralWidget(central_canvas)
+    main_window.show()
+    sys.exit(app.exec())

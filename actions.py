@@ -27,7 +27,7 @@ def open_chatgpt():
     return f"[SUCCESS] Opened ChatGPT..."
 
 def open_google_gemini():
-    url = f"https://www.gemini.google.com/"
+    url = f"https://gemini.google.com/"
     webbrowser.open(url)
     return f"[SUCCESS] Opened Google Gemini..."
 
