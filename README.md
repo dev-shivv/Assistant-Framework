@@ -13,7 +13,9 @@ with a modular structure — brain, actions, and UI fully separated.
 ## Project Structure
 - `actions.py` — all web and app functions
 - `engine.py` — command parsing brain
-- `main.py` — entry point
+- `ui.py` — for UI
+- `StyleSheet.qss` for UI styling
+- `app.py` — connecting point
 
 ## Vision
 A fully functional desktop assistant that understands natural 
@@ -25,9 +27,9 @@ Not a toy project. Built to actually use daily.
 - [o] Structure Understandings
 - [o] Simple Logic Implementation
 - [o] CLI
-- [x] Command parsing engine
-- [x] Web and app actions
-- [x] PySide6 UI with live terminal display panel
+- [o] Command parsing engine
+- [o] Web and app actions
+- [o] PySide6 UI with live terminal display panel
 - [x] File and app management commands
 - [x] Stable v1.0 release
 
@@ -35,6 +37,9 @@ Not a toy project. Built to actually use daily.
 - Python
 - `re` module — command parsing
 - `webbrowser` module — web actions
+- `PySide6` module — For UI FrameWork
+- `os` module — For OS related operations
+- `sys` module — for system
 
 ## Status
 🔨 Active Development — v0.1
