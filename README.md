@@ -24,14 +24,14 @@ apps, managing files, playing media, searching the web, and more.
 Not a toy project. Built to actually use daily.
 
 ## Roadmap
-- [o] Structure Understandings
-- [o] Simple Logic Implementation
-- [o] CLI
-- [o] Command parsing engine
-- [o] Web and app actions
-- [o] PySide6 UI with live terminal display panel
-- [x] File and app management commands
-- [x] Stable v1.0 release
+- [x] Structure Understandings
+- [x] Simple Logic Implementation
+- [x] CLI
+- [x] Command parsing engine
+- [x] Web and app actions
+- [x] PySide6 UI with live terminal display panel
+- [o] File and app management commands
+- [o] Stable v1.0 release
 
 ## Tech Stack
 - Python
