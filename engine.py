@@ -7,8 +7,6 @@ class Parser():
         pass
     
     def parse(self, command):
-        
-        
         match_query = re.search(r"play (.+) on youtube", command)
         if match_query:
             query = match_query.group(1)

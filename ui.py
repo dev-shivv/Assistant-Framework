@@ -1,9 +1,11 @@
 import os
 import sys
+import datetime
+import requests
 #from engine import Parser as PS
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel, QTextEdit, QHBoxLayout
-from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Property
-from PySide6.QtGui import QColor
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Property, QTimer
+from PySide6.QtGui import QColor, QFontDatabase
 
 class MainWindow(QMainWindow):
 
@@ -18,7 +20,7 @@ class MainWindow(QMainWindow):
         self.input_area = QLineEdit()
         self.input_area.setPlaceholderText("Input Your Command Here...")
 #        self.input_area.returnPressed.connect(self.command_handle)
-
+        
         self.terminal = QTextEdit()
         self.terminal.setReadOnly(True)
         self.terminal.setPlaceholderText("Sh1v's' Terminal...")
@@ -30,6 +32,12 @@ class MainWindow(QMainWindow):
         self.settings_button = QPushButton("⚙️")
 
         self.send_button.setStyleSheet("""QPushButton:pressed { background-color: red;}""")
+        
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_time)
+        self.timer.start(1000)
+        
+        
         #--------—-------—
         columns = QHBoxLayout()
 
@@ -39,7 +47,7 @@ class MainWindow(QMainWindow):
         self.client_name.setObjectName("name_pannel")
         self.weather_label = QLabel("Weather Label Here")
         self.weather_label.setObjectName("weather_panel")
-        self.time_label = QLabel("Time Label Here")
+        self.time_label = QLabel(" ")
         self.time_label.setObjectName("time_panel")
         left_panel.addWidget(self.client_name)
         left_panel.addWidget(self.weather_label)
@@ -74,11 +82,41 @@ class MainWindow(QMainWindow):
 
         layout.addLayout(columns)
         layout.addLayout(bottom_bar)
+        
+        
+        
+        try:
+            self.get_weather()
+            self.update_weather()
+            self.weather_update_timer = QTimer
+            self.weather_update_timer.timeout.connect(self.update_weather)
+            self.weather_update_timer.start(300000)
+            
+        except Exception as e:
+            self.log(str(e))
         #——–----------------
 
     def log(self, message):
         self.terminal.append(f"》》 {message}")
         
+    
+    def update_time(self):
+        self.current = datetime.datetime.now().strftime("%I\n%M\n%p")
+        self.time_label.setText(self.current)
+        
+    def get_weather(self, city="Kota"):
+        api_key = "d5337f0da8f9693351084f159c03b873"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+        response = requests.get(url)
+        data = response.json()
+        temp = data["main"]["temp"]
+        desc = data["weather"][0]["description"]
+        return f"{city}\n{temp} \"C\n {desc}" 
+    
+    def update_weather(self):
+        weather = self.get_weather("Kota")
+        self.weather_label.setText(weather)
+    
 #    def command_handle(self):
 #       try:
 #            command = self.input_area.text()

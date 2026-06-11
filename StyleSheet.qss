@@ -38,3 +38,18 @@ QLabel {
     padding: 8px;
     align: left;
 }
+#time_panel {
+    background-color: rgba(10, 15, 25, 60);
+    font-size: 48px;
+    qproperty-alignment: AlignCenter;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+#weather_panel {
+    background-color: rgba(10, 15, 25, 60);
+    font-size: 48px;
+    qproperty-alignment: AlignCenter;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
