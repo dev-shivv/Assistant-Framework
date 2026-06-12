@@ -40,6 +40,8 @@ Not a toy project. Built to actually use daily.
 - `PySide6` module — For UI FrameWork
 - `os` module — For OS related operations
 - `sys` module — for system
+- `difflib` module — for typo handeling
+- `requests` module for API call
 
 ## Status
 🔨 Active Development — v0.1
