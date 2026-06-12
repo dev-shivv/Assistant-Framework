@@ -14,16 +14,20 @@ class MainApp():
         self.interface.send_button.clicked.connect(self.process_command)
         self.interface.input_area.returnPressed.connect(self.process_command)
         
+    
+        
     def process_command(self):
         self.command = self.interface.input_area.text()
         if not self.command.strip():
             return
-        try:   
+        try:
+            self.interface.log_delayed(f" [You] : {self.command}", 1)   
+            self.interface.log_delayed(f" [System] Processing...", 800)
             result = self.core_logic.parse(self.command)
-            self.interface.log(result)
-            
+            self.interface.log_delayed(f" [System] {result}", 1000)
+            self.interface.log_delayed(f" [System] Processed", 1500)
         except Exception as e:
-            self.interface.log(f"Engine Error: {str(e)}")
+            self.interface.log(f" [System] Engine Error : {str(e)}")
             
         self.interface.input_area.clear()
         

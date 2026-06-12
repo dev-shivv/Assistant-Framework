@@ -1,6 +1,23 @@
 #this is logic file
 import webbrowser
 import os
+import psutil
+import datetime
+
+def time_query():
+    time = datetime.datetime.now().strftime("%I:%M:%S:%p")
+    return f"Current Time is: {time}"
+
+def  system_info():
+    battery = psutil.sensors_battery()
+    ram = psutil.vertual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+    
+    return f""" [——SYSTEM    INFO——]
+    Battery: {battery.percent}% {'(Charging)' if battery.power_plugged else '(Discharging)'}
+    RAM: {ram.percent}% used
+    CPU: {cpu}%
+    """
 
 def open_youtube():
     url = f"https://www.youtube.com/"

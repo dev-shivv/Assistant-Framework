@@ -4,8 +4,8 @@ import datetime
 import requests
 #from engine import Parser as PS
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel, QTextEdit, QHBoxLayout
-from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Property, QTimer
-from PySide6.QtGui import QColor, QFontDatabase
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Property, QTimer, QVariantAnimation
+from PySide6.QtGui import QColor, QFontDatabase, QPalette
 
 class MainWindow(QMainWindow):
 
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         self.client_name = QLabel("Assistant Sh1v")
         self.client_name.setFixedSize(225, 50)
         self.client_name.setObjectName("name_pannel")
-        self.weather_label = QLabel("Weather Label Here")
+        self.weather_label = QLabel("Weather")
         self.weather_label.setObjectName("weather_panel")
         self.time_label = QLabel(" ")
         self.time_label.setObjectName("time_panel")
@@ -86,8 +86,8 @@ class MainWindow(QMainWindow):
         
         
         try:
-            self.get_weather()
-            self.update_weather()
+            #self.get_weather()
+            #self.update_weather()
             self.weather_update_timer = QTimer
             self.weather_update_timer.timeout.connect(self.update_weather)
             self.weather_update_timer.start(300000)
@@ -95,9 +95,34 @@ class MainWindow(QMainWindow):
         except Exception as e:
             self.log(str(e))
         #——–----------------
+        
+        self.colors = ["#0a0a0a", "#1a0a2e", "#1a0a0a", "#001a1a", "#0f0a1a"]
+        self.color_index = 0
+        self.bg_timer = QTimer()
+        self.bg_timer.timeout.connect(self.shifting_bg)
+        self.bg_timer.start(3000)
+        
+        
+        
+        
+
+        self.anim = QVariantAnimation()
+        self.anim.setDuration(3000)  # 3 seconds per transition
+        self.anim.setLoopCount(-1)   # infinite loop
+        self.anim.setStartValue(QColor("#0a0a0a"))
+        self.anim.setEndValue(QColor("#1a0a2e"))
+        self.anim.valueChanged.connect(self.apply_bg)
+        self.anim.start()
+        
+        #_____________________________________________________
+        
+    def log_delayed(self, message, delay_ms):
+        QTimer.singleShot(int(delay_ms), lambda msg=message: self.log(msg))
+        
 
     def log(self, message):
-        self.terminal.append(f"》》 {message}")
+        self.log_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.terminal.append(f">> [{self.log_time}] {message}")
         
     
     def update_time(self):
@@ -105,6 +130,7 @@ class MainWindow(QMainWindow):
         self.time_label.setText(self.current)
         
     def get_weather(self, city="Kota"):
+        pass
         api_key = "d5337f0da8f9693351084f159c03b873"
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
         response = requests.get(url)
@@ -116,6 +142,20 @@ class MainWindow(QMainWindow):
     def update_weather(self):
         weather = self.get_weather("Kota")
         self.weather_label.setText(weather)
+        
+    def shifting_bg(self):
+        self.color_index = (self.color_index + 1) % len(self.colors)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(self.colors[self.color_index]))
+        self.setPalette(palette)
+        self.setAutoFillBackground(True)
+        
+    def apply_bg(self, color):
+        palette = self.palette()
+        palette.setColor(QPalette.Window, color)
+        self.setPalette(palette)
+        self.setAutoFillBackground(True)
+        
     
 #    def command_handle(self):
 #       try:
