@@ -1,6 +1,7 @@
 import re
 import actions as ac
 import difflib
+from HCscript import HCS
 
 command_list = [
     "open youtube",
@@ -18,8 +19,12 @@ class Parser():
     
     def __init__(self):
         pass
+        
     
     def parse(self, command):
+        
+
+            
         match_query = re.search(r"play (.+) on youtube", command)
         if match_query:
             query = match_query.group(1)
@@ -60,7 +65,7 @@ class Parser():
         match_query7 = re.search(r"open github", command)
         if match_query7:
             # query = match_query7.group(1)
-            return ac.open_github()
+            return ac.github_profile()
             #return "Opening GitHub...."
             
         match_query8 = re.search(r"open youtube", command)
@@ -76,11 +81,12 @@ class Parser():
         time_info = re.search(r"what time", command)    
         if time_info:
             return ac.time_query()
-        
+            
         close = difflib.get_close_matches(command, command_list, n=1, cutoff=0.6)
         if close:
                 return self.parse(close[0])
                 
                 
-        return "ERROR command not recognized"
+        self.hcs = HCS()
+        return self.hcs.handle_replies(command)
                 

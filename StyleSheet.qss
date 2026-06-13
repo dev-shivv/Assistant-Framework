@@ -1,62 +1,189 @@
+/* ===================================================================
+   PLEASE    READ    README.md    FOR    MORE    INFO
+   =================================================================== */
 
-QPushButton { 
-    background-color: #03dac6; 
-    color: black; 
-    border-radius: 15px; 
-    padding: 15px; 
-    font-size: 18px;
-}
-QLabel { color: white; font-size: 20px; }
-QTextEdit {
-    background-color: #0a0a0a;
-    color: #03dac6;
-    font-family: consolas, monospace;
-    font-size: 14px;
-    border: 1px solid #03dac6;
-    border-radius: 8px;
-    padding: 8px;
-}
+/* Left Panels styling */
 #name_pannel {
-    background-color: #0a0a0a;
-    color: #03dac6;
-    font-family: consolas, monospace;
-    font-size: 14px;
-    border: 1px solid #03dac6;
+    background: rgba(20, 15, 30, 160);
+    color: #00FFCC;
+    border: 1px solid #00FFCC;
     border-radius: 8px;
-    padding: 8px;
-    align: left;
+    font-weight: bold;
+    font-family: 'sans-serif';
 }
 
-QLabel {
-    background-color: #0a0a0a;
-    color: #03dac6;
-    font-family: consolas, monospace;
-    font-size: 14px;
-    border: 1px solid #03dac6;
+#clock_weather_card {
+    background: rgba(15, 10, 25, 150);
+    border: 1px solid #FF007A;
     border-radius: 8px;
-    padding: 8px;
-    align: left;
-}
-#time_panel {
-    background-color: rgba(10, 15, 25, 0.15);
-    font-size: 48px;
-    qproperty-alignment: AlignCenter;
-    font-family: "Montserrat";
-    font-weight: bold;
 }
 
-#weather_panel {
-    background-color: rgba(0, 0, 0, 0.15);
-    border: 2px solid rgba(3, 218, 198, 0.3);
-    border-radius: 15px;
-    font-size: 48px;
-    qproperty-alignment: AlignCenter;
-    font-family: "Montserrat";
-    font-weight: bold;
+#weather_text {
+    color: #FFFFFF;
+    font-family: 'monospace';
+    font-size: 12px;
+    background: transparent;
+    border: none;
 }
+
+#stats_panel {
+    background: rgba(15, 10, 25, 150);
+    border: 1px solid #00FFCC;
+    border-radius: 8px;
+}
+
+#stats_title {
+    font-weight: bold; 
+    color: #FF007A; 
+    font-size: 11px; 
+    background: transparent;
+    border: none;
+}
+
+#stats_core {
+    font-family: 'monospace'; 
+    font-size: 11px; 
+    color: #00FFCC; 
+    background: transparent;
+    border: none;
+}
+
+/* Center Search Viewport */
+#search_bar {
+    background: rgba(15, 10, 25, 180);
+    border: 1px solid #00FFCC;
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding-left: 10px;
+    font-family: 'sans-serif';
+}
+
+/* Center Chat Viewport Engine */
+#chat_scroll_viewport {
+    background: transparent;
+    border: none;
+}
+
+#chat_container {
+    background: transparent;
+    border: none;
+}
+
+/* Chat Bubbles Layout & Rendering */
+#user_tag {
+    color: #FF007A;
+    background: transparent;
+}
+
+#user_bubble {
+    background-color: rgba(30, 25, 45, 190);
+    color: #FFFFFF;
+    border: 1px solid #FF007A;
+    border-radius: 12px;
+    padding: 8px 14px;
+}
+
+#ai_tag {
+    color: #00FFCC;
+    background: transparent;
+}
+
+#ai_bubble {
+    background-color: rgba(15, 25, 35, 190);
+    color: #D1F4FF;
+    border: 1px solid #00FFCC;
+    border-radius: 12px;
+    padding: 8px 14px;
+}
+
+/* Right Column Panels & Alternates */
+#terminal_wrapper {
+    background: rgba(15, 10, 25, 0.15); 
+    border: 1px solid #FF007A; 
+    border-radius: 8px;
+}
+
 #terminal {
-    color: green;
-    background-color: rgba(225, 225, 225, 0.15);
-    border: 2px solid rgba(3, 218, 198, 0.4);
-    border-radius: 15px;
+    background-color: rgba(225, 225, 225, 0.15); 
+    border: 2px solid rgba(3, 218, 198, 0.4); 
+    color: #D1F4FF;
+    font-family: 'monospace';
+}
+
+#box_top_utils {
+    background: rgba(15, 10, 25, 150); 
+    border: 1px solid #00FFCC; 
+    border-radius: 8px;
+}
+
+#box_top_title {
+    font-weight: bold; 
+    color: #00FFCC; 
+    font-size: 11px; 
+    background: transparent; 
+    border: none;
+}
+
+#box_top_core {
+    font-family: 'monospace'; 
+    font-size: 11px; 
+    color: #FFFFFF; 
+    background: transparent; 
+    border: none;
+}
+
+#box_bottom_db {
+    background: rgba(15, 10, 25, 150); 
+    border: 1px solid #FF007A; 
+    border-radius: 8px;
+}
+
+#box_bottom_title {
+    font-weight: bold; 
+    color: #FF007A; 
+    font-size: 11px; 
+    background: transparent; 
+    border: none;
+}
+
+#box_bottom_core {
+    font-family: 'monospace'; 
+    font-size: 11px; 
+    color: #FFFFFF; 
+    background: transparent; 
+    border: none;
+}
+
+#toggle_pane_btn {
+    background: rgba(20, 15, 30, 160);
+    color: #00FFCC;
+    border: 1px solid rgba(0, 255, 204, 80);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Bottom Input Area Components */
+#profile {
+    background: rgba(20, 15, 30, 160);
+    color: #FF007A;
+    border: 1px solid #FF007A;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: 'monospace';
+}
+
+#input_area {
+    background: rgba(15, 10, 25, 180);
+    border: 1px solid #FF007A;
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding-left: 10px;
+    font-family: 'sans-serif';
+}
+
+#mic_button, #send_button, #settings_button {
+    background: rgba(20, 15, 30, 160);
+    color: #00FFCC;
+    border: 1px solid #00FFCC;
+    border-radius: 8px;
 }
