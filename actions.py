@@ -22,47 +22,63 @@ def  system_info():
 def open_youtube():
     url = f"https://www.youtube.com/"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened YouTube..."
+    terminal = f"[SUCCESS] Opened YouTube"
+    chat = f"Sure Sir,\nI\'ve opened YouTube for you."
+    return terminal, chat
 
 def play_youtube(query_youtube):
     clean_query = query_youtube.strip().replace(" ", "+")
     url = f"https://www.youtube.com/results?search_query={clean_query}"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened YouTube For Query : {query_youtube}"
+    terminal = f"[SUCCESS] Opened Yourube For Query : {query_youtube}"
+    chat = f"Sure Sir,\nI\'ve opened YouTUbe and searched {query_youtube} for you. "
+    return terminal, chat
 
 
 def search_web(query_web):
     clean_query = query_web.strip().replace(" ", "+")
     url = f"https://www.google.com/search?q={clean_query}"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened Google For Query : {query_web}"
+    terminal = f"[SUCCESS] Opened Google For Query : {query_web}"
+    chat = f"Sure Sir,\nI\'ve opened Google for you. "
+    return terminal, chat
 
 
 def open_chatgpt():
     url = f"https://www.chatgpt.com/"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened ChatGPT..."
+    terminal = f"[SUCCESS] Opened ChatGPT"
+    chat = f"Sure Sir,\nI\'ve opened ChatGPT for you. "
+    return terminal, chat
 
 def open_google_gemini():
     url = f"https://gemini.google.com/"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened Google Gemini..."
+    terminal = f"[SUCCESS] Opened Google Gemini"
+    chat = f"Sure Sir,\nI\'ve opened Google Gemini for you. "
+    return terminal, chat
 
 def open_claude():
     url = f"https://www.claude.ai/"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened Claude..."
+    terminal = f"[SUCCESS] Opened Claude"
+    chat = f"Sure Sir,\nI\'ve opened Claude for you. "
+    return terminal, chat
 
-def github_profile(query_github):
-    url = f"https://www.github.com/"
+def github_profile():
+    url = f"https://www.github.com/dev-shivv/Assistant-Framework.git"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened GitHub..."
+    terminal = f"[SUCCESS] Opened dev-shivv\'s GitHub"
+    chat = f"Sure Sir,\nI\'ve opened your GitHub Repo of this project for you. "
+    return terminal, chat
 
 def open_spotify(query_spotify):
     clean_query = query_web.strip().replace(" ", "+")
     url = f"https://www.spotify.com/"
     webbrowser.open(url)
-    return f"[SUCCESS] Opened Spotify..."
+    terminal = f"[SUCCESS] Opened Spotify"
+    chat = f"Sure Sir,\nI\'ve opened Spotify for you. "
+    return terminal, chat
 
 
 

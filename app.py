@@ -40,14 +40,16 @@ class MainApp():
             self.self_bubble(self.command)
             self.interface.log_delayed(f"[You] : {self.command}", 1)
             self.interface.log_delayed(f"[System] Processing...", 800)
-            result = self.brain.parse(self.command)
-            self.ai_bubble(result)
+            result, chat = self.brain.parse(self.command)
+            self.ai_bubble(chat)
             self.interface.log_delayed(f" [System] Processed : {result}", 1500)
             
         except Exception as e:
             self.interface.log(f" [System] Engine Error : {str(e)}")
             
         self.interface.input_area.clear()
+        
+    
            
                  
 if __name__ == "__main__" :

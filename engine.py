@@ -2,6 +2,8 @@ import re
 import actions as ac
 import difflib
 from HCscript import HCS
+#from target_device import PhoneCommand
+import phone_assist as remote
 
 command_list = [
     "open youtube",
@@ -12,7 +14,8 @@ command_list = [
     "open github",
     "open spotify",
     "system info",
-    "what time"
+    "what time",
+    "on my phone"
     ]
 
 class Parser():
@@ -23,6 +26,10 @@ class Parser():
     
     def parse(self, command):
         
+        phone_assistance = re.search(r"(.+) on my phone", command)
+        if phone_assistance:
+            self.cmd = phone_assistance.group(1)
+            return remote.send_command(self.cmd)
 
             
         match_query = re.search(r"play (.+) on youtube", command)
@@ -32,7 +39,7 @@ class Parser():
             #return "Playing"
         
         
-        match_query2 = re.search(r"search (.+) ", command)
+        match_query2 = re.search(r"search (.+) on ", command)
         if match_query2:
             query = match_query2.group(1)
             return ac.search_web(query)
@@ -89,4 +96,7 @@ class Parser():
                 
         self.hcs = HCS()
         return self.hcs.handle_replies(command)
+        
+       
                 
+        
