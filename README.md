@@ -38,7 +38,10 @@ I'm still learning Python and PySide6, so I don't know every part of every libra
 
 - **Command routing system**
   - Matches what the user types/says and runs the right action
-
+- **Added Remote Device Control**
+   - You can now control you Android device (a bit limit right now) but yes
+   - I'll fix it ASAP but I had to sign off with few broken syntaxes today And im genuinely sorry for that
+   - thank you
 ---
 
 ## 🔄 What I'm Working On Now
