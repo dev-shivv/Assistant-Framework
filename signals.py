@@ -1,3 +1,5 @@
+#this was an experiment file got pushed by mistake while i was uploading files manually
+
 from PySide6.QtCore import QObject, Signal
 
 class CommConnector(QObject):
