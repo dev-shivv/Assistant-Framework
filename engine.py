@@ -2,8 +2,7 @@ import re
 import actions as ac
 import difflib
 from HCscript import HCS
-#from target_device import PhoneCommand
-import phone_assist as remote
+import phone_assist as assist
 
 command_list = [
     "open youtube",
@@ -26,10 +25,7 @@ class Parser():
     
     def parse(self, command):
         
-        phone_assistance = re.search(r"(.+) on my phone", command)
-        if phone_assistance:
-            self.cmd = phone_assistance.group(1)
-            return remote.send_command(self.cmd)
+        
 
             
         match_query = re.search(r"play (.+) on youtube", command)
@@ -88,6 +84,12 @@ class Parser():
         time_info = re.search(r"what time", command)    
         if time_info:
             return ac.time_query()
+            
+        phone_assistance = re.search(r"(.+) on my phone", command)
+        if phone_assistance:
+            cmd = phone_assistance.group(1)
+            return assist.send_command(cmd)
+            
             
         close = difflib.get_close_matches(command, command_list, n=1, cutoff=0.6)
         if close:
