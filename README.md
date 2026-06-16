@@ -1,80 +1,44 @@
-# 🚀 Assistant Sh1v `v0.2 Beta`
-
-A personal desktop assistant I'm building to learn software development while making something I actually want to use.
-
-The idea is simple — type or speak a command, the assistant gets it, sends it to the right action, and replies in a natural way. The project is still being built, but my main focus right now is making the core engine accurate, stable, and easy to add stuff to.
-
+# 🚀 Assistant Sh1v `v0.2.1 Beta`
+A personal desktop assistant I'm building to learn software development while making something I actually want to use. My focus has shifted from simple prototyping to building a robust, crash-proof architecture capable of handling complex tasks without UI freezes or memory instability.
 ---
-
 ## 🛠️ About The Project
-
 This project is built using my own work mixed with some AI-assisted tools.
-
 ### UI & Frontend
-
-I designed the interface in Canva and converted it into PySide6 code with help from Gemini. Since I'm coding on an Android device, AI-assisted UI generation lets me focus more time on the logic and structure of the app.
-
+Designed in Canva and implemented using **PySide6**. The UI is built to be responsive and decoupled from the engine to ensure a smooth user experience.
 ### Backend & App Logic
-
-The backend, command parsing system, action routing, and feature integration — all of that is built and maintained by me.
-
-I'm still learning Python and PySide6, so I don't know every part of every library. But I do understand how the different pieces work together and how to keep adding features without breaking what already works.
-
+The engine, action routing, and feature integration are maintained by me. I am currently hardening the architecture to prevent memory corruption (Segmentation Faults) and ensuring thread safety using `QThread` and signal/slot communication.
 ---
-
 ## 📈 Current Features
-
 ### ✅ Implemented
-
-- **Dynamic command parsing**
-  - Pulls out the useful info from natural commands like:
-    > *"play believer on youtube"* → Query: `believer`
-
-- **Typo correction using `difflib`**
-  - Helps when there's a small spelling mistake or the command doesn't match perfectly
-
-- **Modular architecture**
-  - UI, engine, and action layers are all kept separate
-
-- **Command routing system**
-  - Matches what the user types/says and runs the right action
-- **Added Remote Device Control**
-   - You can now control you Android device (a bit limit right now) but yes
-   - I'll fix it ASAP but I had to sign off with few broken syntaxes today And im genuinely sorry for that
-   - thank you
+- **Dynamic command parsing:** Extracts intent from natural language.
+- **Resilient execution:** Custom `@log_and_guard` decorator to catch errors without crashing the entire app.
+- **Modular architecture:** Clean separation between UI, Engine, and Actions.
+- **Asynchronous Processing:** Full implementation of `QThread` to prevent UI freezing during network requests.
+- **Remote Device Control:** Cross-device command routing (currently under active refinement).
+- **Stable Logging:** Custom, non-blocking file-based logging to replace volatile system-wide configurations.
 ---
-
 ## 🔄 What I'm Working On Now
-
-- Adding `QThread` for background tasks
-- Stopping the UI from freezing during network stuff
-- Making the command parser more reliable
-- Cleaning up the engine so it's easier to expand later
-
+- **Hardened Execution:** Finalizing error handling for remote device communication (Timeouts & Retries).
+- **Workflow Optimization:** Transitioning to a hybrid development environment (External browser-based IDEs with local command-line execution) to bypass mobile storage constraints.
+- **Stability:** Eliminating race conditions and resource contention in the background worker threads.
 ---
-
 ## 🎯 Long-Term Goals
-
 - [ ] Voice interaction
 - [ ] Local AI integration (Ollama / Mistral)
 - [ ] ESP32 hardware control
 - [ ] Email and messaging automation
-- [ ] Scheduling and reminders
 - [ ] Context-aware conversations
 - [ ] Plugin-based command system
-
 ---
-
 ## 📋 Project Info
 
 | Field | Details |
-|---|---|
-| Version | `v0.2 Beta` |
+| :--- | :--- |
+| Version | `v0.2.1 Beta` |
 | Language | Python |
 | Framework | PySide6 |
-| Dev Environment | Android (Pydroid 3) |
-| Status | 🟢 Active Development |
+| Dev Environment | Pydroid 3  |
+| Status | 🟢 Hardening Architecture |
 
 ---
-
-> This project started as a learning experiment and slowly became my main long-term software project. Every new feature teaches me something new about how software actually works — architecture, problem-solving, all of it.
+> This project has evolved from a learning experiment into a study of robust software architecture. By prioritizing stability and clean design over quick-and-dirty features, I am building a system that is not only functional but maintainable and professional.
