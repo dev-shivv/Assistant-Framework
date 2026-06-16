@@ -3,6 +3,7 @@ import actions as ac
 import difflib
 from HCscript import HCS
 import phone_assist as assist
+from log_handler import log_and_guard
 
 command_list = [
     "open youtube",
@@ -22,60 +23,41 @@ class Parser():
     def __init__(self):
         pass
         
-    
+    #@log_and_guard
     def parse(self, command):
-        
-        
-
-            
         match_query = re.search(r"play (.+) on youtube", command)
         if match_query:
             query = match_query.group(1)
             return ac.play_youtube(query)
-            #return "Playing"
-        
-        
+            
         match_query2 = re.search(r"search (.+) on ", command)
         if match_query2:
             query = match_query2.group(1)
             return ac.search_web(query)
-            #return "Opening Browser..."
         
         match_query3 = re.search(r"open gemini", command)
         if match_query3:
-            # query = match_query3.group(1)
             return ac.open_google_gemini()
-            #return "Opening Gemini..."
     
         match_query4 = re.search(r"open claude", command)
         if match_query4:
-            # query = match_query4.group(1)
             return ac.open_claude()
-            #return "Opening Claude...."
             
         match_query5 = re.search(r"open chatgpt", command)
         if match_query5:
-            # query = match_query5.group(1)
             return ac.open_chatgpt()
-            #return "Opening ChatGPT...."
             
         match_query6 = re.search(r"open spotify", command)
         if match_query6:
-            # query = match_query6.group(1)
             return ac.open_spotify()
-            #return "Opening Spotify...."
         
         match_query7 = re.search(r"open github", command)
         if match_query7:
-            # query = match_query7.group(1)
             return ac.github_profile()
-            #return "Opening GitHub...."
             
         match_query8 = re.search(r"open youtube", command)
         if match_query8:
-            # query = match_query8.group(1)
             return ac.open_youtube()
-            #return "Opening YouTube...."
            
         sys_info = re.search(r"system info", command) 
         if sys_info:

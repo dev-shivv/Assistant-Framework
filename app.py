@@ -6,6 +6,17 @@ import ui
 from ui import MainWindow
 from engine import Parser
 
+"""
+import logging
+from log_handler import handle_logs
+handle_logs()
+logging.basicConfig(
+    filename = 'latestlog.txt',
+    level = logging.INFO,
+    format = '%(asctime)s - %(levelname)s - %(message)s'
+)
+logging.info("System Boot System Initialised...")
+"""
 
 class EngineWorker(QObject):
     finished = Signal(object, str)
