@@ -27,21 +27,31 @@ def open_youtube():
     return terminal, chat
 
 def play_youtube(query_youtube):
-    clean_query = query_youtube.strip().replace(" ", "+")
-    url = f"https://www.youtube.com/results?search_query={clean_query}"
-    webbrowser.open(url)
-    terminal = f"[SUCCESS] Opened Yourube For Query : {query_youtube}"
-    chat = f"Sure Sir,\nI\'ve opened YouTUbe and searched {query_youtube} for you. "
-    return terminal, chat
+    if query_youtube == None:
+        return open_youtube()
+    else:
+        #clean_query = query_youtube.strip().replace(" ", "+")
+        url = f"https://www.youtube.com/results?search_query={query_youtube}"
+        webbrowser.open(url)
+        terminal = f"[SUCCESS] Opened Yourube For Query : {query_youtube}"
+        chat = f"Sure Sir,\nI\'ve opened YouTUbe and searched {query_youtube} for you. "
+        return terminal, chat
 
 
-def search_web(query_web):
-    clean_query = query_web.strip().replace(" ", "+")
-    url = f"https://www.google.com/search?q={clean_query}"
-    webbrowser.open(url)
-    terminal = f"[SUCCESS] Opened Google For Query : {query_web}"
-    chat = f"Sure Sir,\nI\'ve opened Google for you. "
-    return terminal, chat
+def search_google(query_web):
+    if query_web == None:
+        webbrowser.open("https://www.google.com/")
+        terminal = f"[SUCCESS] Opened Google.[no query was given]"
+        chat = f"Sure Sir,\nI\'ve opened Google for you. "
+        return terminal, chat
+        
+    else:
+        #clean_query = query_web.strip().replace(" ", "+")
+        url = f"https://www.google.com/search?q={query_web}"
+        webbrowser.open(url)
+        terminal = f"[SUCCESS] Opened Google For Query : {query_web}"
+        chat = f"Sure Sir,\nI\'ve opened Google for you. "
+        return terminal, chat
 
 
 def open_chatgpt():

@@ -33,7 +33,7 @@ class Parser():
         match_query2 = re.search(r"search (.+) on ", command)
         if match_query2:
             query = match_query2.group(1)
-            return ac.search_web(query)
+            return ac.search_google(query)
         
         match_query3 = re.search(r"open gemini", command)
         if match_query3:
