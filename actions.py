@@ -19,7 +19,7 @@ def  system_info():
     CPU: {cpu}%
     """
 
-def open_youtube():
+def open_youtube(query):
     url = f"https://www.youtube.com/"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened YouTube"
@@ -50,32 +50,32 @@ def search_google(query_web):
         url = f"https://www.google.com/search?q={query_web}"
         webbrowser.open(url)
         terminal = f"[SUCCESS] Opened Google For Query : {query_web}"
-        chat = f"Sure Sir,\nI\'ve opened Google for you. "
+        chat = f"Sure Sir,\nI\'ve opened Google and searched {query_web} for you. "
         return terminal, chat
 
 
-def open_chatgpt():
+def open_chatgpt(query):
     url = f"https://www.chatgpt.com/"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened ChatGPT"
     chat = f"Sure Sir,\nI\'ve opened ChatGPT for you. "
     return terminal, chat
 
-def open_google_gemini():
+def open_google_gemini(query):
     url = f"https://gemini.google.com/"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened Google Gemini"
     chat = f"Sure Sir,\nI\'ve opened Google Gemini for you. "
     return terminal, chat
 
-def open_claude():
+def open_claude(query):
     url = f"https://www.claude.ai/"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened Claude"
     chat = f"Sure Sir,\nI\'ve opened Claude for you. "
     return terminal, chat
 
-def github_profile():
+def github_profile(query):
     url = f"https://www.github.com/dev-shivv/Assistant-Framework.git"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened dev-shivv\'s GitHub"
