@@ -41,9 +41,15 @@ The engine, action routing, and feature integration are maintained by me. I am c
 | Status | 🟢 Hardening Architecture |
 
 ## Latest Update 
-- In files `action.py` and `engine.py`
-- ## Bug fixed
-- - Google open crash
+- In files `action.py`, `engine.py`and `ui.py`
+- ## Brand New UI
+  - Updated UI with dark mode and light mode options.
+  - settings have a window where you can change your username too
+  - focus mode in settings where you can talk with your Local AI models in future
+- ## Brand new type of Engine
+  - Added a NLP (Natural Language Processing) for better output and response
+  - API based calls will be added in few days (Grok).<img width="1340" height="800" alt="1000026381" src="https://github.com/user-attachments/assets/628775a6-a8fd-45c5-b030-303baf20d882" />
+<img width="1340" height="800" alt="1000026381" src="https://github.com/user-attachments/assets/674901c2-c63f-4b8a-a05c-9cc67ec08bf4" />
 
 ---
 > This project has evolved from a learning experiment into a study of robust software architecture. By prioritizing stability and clean design over quick-and-dirty features, I am building a system that is not only functional but maintainable and professional.
