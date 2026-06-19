@@ -48,7 +48,7 @@ The engine, action routing, and feature integration are maintained by me. I am c
   - focus mode in settings where you can talk with your Local AI models in future
 - ## Brand new type of Engine
   - Added a NLP (Natural Language Processing) for better output and response
-  - API based calls will be added in few days (Grok).
+  - API based calls will be added in few days (Groq).
   - <img width="1340" height="800" alt="1000026381" src="https://github.com/user-attachments/assets/628775a6-a8fd-45c5-b030-303baf20d882" />
 
 ---
