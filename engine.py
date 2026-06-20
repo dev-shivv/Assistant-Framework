@@ -5,10 +5,12 @@ import actions as ac
 import phone_assist as assist
 from HCscript import HCS
 from log_handler import log_and_guard
+#from ui import NetworkModeButton as NMB
 
 class Parser:
-    def __init__(self):
+    def __init__(self, button_instance):
 
+        self.button = button_instance
         self.command_list = [
             "open youtube", "play", "search", "open gemini", 
             "open claude", "open chatgpt", "open github", 
@@ -78,5 +80,14 @@ class Parser:
                 return target_func(query) #if query else target_func()
         
         
-        
-        return "I couldn't identify that command."
+        self.state= self.button.current_state
+        if self.state ==0:
+            return "Hii"
+        elif self.state ==1:
+            return "Hybrid"
+        else:
+            return "offline"
+        try:
+            return "error"
+        except Exception as e:
+            return f"{e}"

@@ -3,7 +3,7 @@ import os
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QObject, QThread, Signal
 import ui
-from ui import MainWindow
+from ui import MainWindow, NetworkModeButton
 from engine import Parser
 
 """
@@ -48,11 +48,20 @@ class MainApp(QObject):
     def __init__(self):
         super().__init__()
         self.interface = MainWindow()
-        self.brain = Parser()
+        self.net_button = NetworkModeButton()
+        self.net_button.state_change.connect(self.state_check)
+        self.brain = Parser(self.net_button)
 
         self.interface.send_button.clicked.connect(self.process_command)
         self.interface.input_area.returnPressed.connect(self.process_command)
-
+        
+        #self.update_state()
+        #self.state = self.net_button.current_state
+        #self.brain.clicked.connect(hey(self.state))
+    
+    def state_check(self, state):
+        self.brain.set_mode(state)
+    
     def self_bubble(self, cmd_text):
         if not cmd_text:
             return
@@ -105,8 +114,17 @@ class MainApp(QObject):
         self.interface.input_area.setEnabled(True)
         self.interface.send_button.setEnabled(True)
         self.interface.input_area.setFocus()
+#=======================================
+
+    def cycle_mode(self):
+        self.current_state = (self.net_button.current_state + 1) % 3 #len(self.modes)
+        self.net_button.update_state(self.current_state)
+
+    
 
 
+
+#========================================
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 

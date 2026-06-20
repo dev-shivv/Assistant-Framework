@@ -12,7 +12,10 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import QTimer, Qt, QTime, QPoint, QPropertyAnimation, QParallelAnimationGroup, Slot, QEasingCurve, Signal
 from PySide6.QtGui import QColor, QPainter, QRadialGradient, QPolygon, QPen, QFont
+import engine
 
+#self.net_btn = NetworkModeButton()
+#result = engine.hey.(self.net_btn.get_state())
 
 class ClickableBox(QWidget):
     clicked = Signal()
@@ -23,7 +26,7 @@ class ClickableBox(QWidget):
         if event.button() == Qt.LeftButton:
             self.clicked.emit()
         super().mousePressEvent(event)
-
+                      
 
 class AnimatedBackgroundWidget(QWidget):
     def __init__(self, parent=None):
@@ -261,25 +264,56 @@ class MicWidget(QWidget):
 
 
 class NetworkModeButton(QPushButton):
-    def __init__(self, parent=None):
-        super().__init__("NET: ONLINE", parent)
-        self.modes = ["online", "hybrid", "offline"]
-        self.current_idx = 0
+    state_change = Signal(int)
+    def __init__(self):
+        super().__init__()
+        
+        
+        #self.modes = ["online", "hybrid", "offline"]
+        #self.net_btn = NetworkModeButton()
+        self.current_state = 0
         self.setObjectName("network_mode_btn")
         self.setFixedSize(130, 45)
         self.update_state()
         self.clicked.connect(self.cycle_mode)
-
+        
+        
     def cycle_mode(self):
-        self.current_idx = (self.current_idx + 1) % len(self.modes)
+        self.current_state = (self.current_state + 1) % 3 #len(self.modes)
         self.update_state()
+        self.state_change.emit(self.current_state)
 
     def update_state(self):
-        mode = self.modes[self.current_idx]
-        self.setProperty("mode", mode)
-        self.setText(f"NET: {mode.upper()}")
-        self.style().unpolish(self)
-        self.style().polish(self)
+        try:
+            if self.current_state == 0:
+                mode = str(self.current_state)
+                self.setProperty("mode", mode)
+                self.setText(f"NET: ONLINE")
+                self.style().unpolish(self)
+                self.style().polish(self)
+            elif self.current_state == 1:
+                mode = str(self.current_state)
+                self.setProperty("mode", mode)
+                self.setText(f"NET: HYBRID")
+                self.style().unpolish(self)
+                self.style().polish(self)
+            elif self.current_state == 2:
+                mode = str(self.current_state)
+                self.setProperty("mode", mode)
+                self.setText(f"NET: OFFLINE")
+                self.style().unpolish(self)
+                self.style().polish(self)
+            self.get_state()
+        except Exception as e:
+            print(e)
+            
+    def get_state(self):
+        return self.current_state
+        #mode = self.modes[self.current_idx]
+        #self.setProperty("mode", mode)
+        #self.setText(f"NET: {mode.upper()}")
+        #self.style().unpolish(self)
+        #self.style().polish(self)
 
 
 class ThinkingIndicator(QWidget):
