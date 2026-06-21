@@ -5,6 +5,7 @@ import actions as ac
 import phone_assist as assist
 from HCscript import HCS
 from log_handler import log_and_guard
+import groqAPI as agf # ask_groq_fast as agf
 #from ui import NetworkModeButton as NMB
 
 class Parser:
@@ -81,12 +82,12 @@ class Parser:
         
         
         self.state= self.button.current_state
-        if self.state ==0:
-            return "Hii"
+        if self.state == 0:
+            return "Hey Sorry but ONLINE mode is under developement you may check out HYBRID for now."
         elif self.state ==1:
-            return "Hybrid"
+            return agf.ask_groq_fast(raw_text)
         else:
-            return "offline"
+            return "Hey Sorry but OFFLINE mode is under developement you may check out HYBRID for now."
         try:
             return "error"
         except Exception as e:

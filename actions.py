@@ -1,4 +1,3 @@
-#this is logic file
 import webbrowser
 import os
 import psutil
@@ -75,7 +74,7 @@ def open_claude(query):
     chat = f"Sure Sir,\nI\'ve opened Claude for you. "
     return terminal, chat
 
-def github_profile(query):
+def open_github(query):
     url = f"https://www.github.com/dev-shivv/Assistant-Framework.git"
     webbrowser.open(url)
     terminal = f"[SUCCESS] Opened dev-shivv\'s GitHub"
