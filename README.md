@@ -1,108 +1,74 @@
-# Assistant Sh1v v0.2.1 Beta
-
+# Assistant Sh1v v0.3.0 Beta
 > **PROJECT STATUS: ACTIVE DEVELOPMENT**
-
-Assistant Sh1v is a personal assistant built from scratch in Python with a strong focus on modular architecture, responsiveness, and scalability. This project serves as a practical exploration of software engineering, modular design, and AI-assisted automation.
-
-Unlike many beginner assistant projects, Sh1v prioritizes maintainable code structure, asynchronous processing, and fault tolerance from the start.
-
+Assistant Sh1v is a personal assistant application built from scratch with a strong focus on modular architecture, responsiveness, and scalability. This project serves as a practical exploration of software engineering, web technologies, and AI-assisted automation.
+Unlike many beginner assistant projects, Sh1v prioritizes maintainable code structure, asynchronous processing, and cross-platform desktop compilation from the start.
 ## 🛠️ About The Project
-
-Assistant Sh1v is designed to be a reliable assistant capable of handling everyday tasks while providing a foundation for future AI, automation, and hardware integrations.
-
+Assistant Sh1v is designed to be a reliable assistant capable of handling everyday tasks while providing a foundation for future AI, automation, and native desktop deployment.
 ### 🎨 UI & Frontend
-* **Built using:** PySide6
-* **Modern dashboard interface**
-* **Theme support:** Dark and light mode
-* **Responsiveness:** Responsive layouts for smooth user interaction
-* **Architecture:** Decoupled UI architecture for maintainability
-* **Interaction:** Real-time dashboard updates through signal-slot communication
-
+* **Built using:** HTML5, CSS3 (Liquid Glass UI), Vanilla JavaScript
+* **Modern layout:** 2:6:2 responsive fluid grid mimicking a command center
+* **Theme support:** Toggleable styles (Liquid Glass vs. Solid mode)
+* **Responsiveness:** Locked viewport sizing optimized for full aspect ratio scaling without outer scroll overflow
+* **Architecture:** Decoupled layout architecture mapped for clean desktop wrapper transition
 ### ⚙️ Backend & Core Architecture
-* **Modular engine design**
-* **Dynamic command parsing system**
-* **Action routing architecture**
-* **Thread-safe task execution**
-* **Error handling:** Custom error handling and logging framework
-* **Separation:** Clear division between interface, logic, and execution layers
-
+* **Current Engine:** Python backend API (handling logic, commands, and routing)
+* **Future State:** Moving to a high-performance **Rust** system core
+* **Native Desktop Wrapper:** Future packaging with the **Tauri Framework** for minimal memory usage and deep OS integration
+* **Asynchronous execution:** Non-blocking request parsing for real-time interaction
 ---
-
 ## 📈 Current Features
-
 ### ✅ Implemented
-* Dynamic NLP command parsing (will be enhanced further)
-* Intent extraction from natural language input (generally)
-* Asynchronous task execution using `QThread`
-* Runtime error protection with custom decorators (under testing)
-* Real-time CPU and RAM monitoring (Showpiece for now)
-* Weather integration (Only API needed)
-* Interactive system logs
-* Settings management system
-* Username personalization
-* Modular action execution framework
-* Stable UI-to-engine communication (Still may glitch)
-* Non-blocking architecture
-
+* Fluid Liquid Glass visual design using modern layout controls
+* Dynamic client-side command parsing layout
+* Asynchronous network event listening targeting API pipeline sync
+* Local UI clock integration and client-side viewport locking
+* Real-time structure for CPU, RAM, and terminal monitors 
+* Stable web frontend-to-backend communication architecture
+* Fully responsive asset scaling across desktop formats
 ### 🚧 Currently In Development
-* Improved intent recognition
-* Expanded command library
-* Hybrid AI routing system
-* Persistent user data storage
-* Enhanced dashboard widgets
-* Smarter context handling
-* Plugin architecture foundation
-
+* Porting Python pipeline layers to lightweight protocols
+* Structuring the Tauri desktop development configuration
+* Improved web interface settings toggle panel
+* Expanded system logging dashboard scripts
+* Smarter context handling within chat loops
 ---
-
 ## 🗺️ Development Roadmap
 
 | Phase | Focus | Status |
 | :--- | :--- | :--- |
 | **Phase 1** | Stability & Optimization | 🔄 |
-| **Phase 2** | Intelligence Layer | 🔜 |
-| **Phase 3** | Data Persistence | 🔜 |
-| **Phase 4** | Desktop Expansion | 🔜 |
+| **Phase 2** | UI Migration (PySide6 ➔ Web) | 🔄 |
+| **Phase 3** | Desktop Native Layer (Tauri + Rust) | 🔜 |
+| **Phase 4** | Intelligence & Data Persistence | 🔜 |
 
 ---
-
 ## 🎯 Long-Term Goals
-* [ ] Voice interaction
-* [ ] Full local AI integration (Ollama / Mistral)
-* [ ] ESP32 hardware control
-* [ ] Email and messaging automation
-* [ ] Context-aware conversation memory
-* [ ] Plugin-based command system
-* [ ] Custom AI model routing
-
+* [ ] Full Tauri desktop application build
+* [ ] Local AI integration (Ollama / Mistral)
+* [ ] Voice interaction and hotkey invocation support
+* [ ] ESP32 hardware control execution
+* [ ] Email and messaging automation pipelines
+* [ ] Context-aware conversation memory storage
 ---
-
 ## 🧰 Technology Stack
 
 | Category | Technology |
 | :--- | :--- |
-| **Language** | Python |
-| **GUI Framework** | PySide6 |
-| **Threading** | QThread |
-| **APIs** | Weather APIs, Groq |
-| **Database** | Local first |
+| **Languages** | Python, JavaScript, HTML, CSS, Rust (Planned) |
+| **Frontend UI** | Fluid Web Canvas (Liquid Glass Design) |
+| **Desktop Framework** | Tauri Framework (Planned) |
+| **APIs** | System Monitoring APIs, Weather APIs, Groq |
+| **Database** | Local first architecture |
 | **Local AI** | Ollama / Mistral (Planned) |
-| **Hardware** | ESP32/GoogleHome (Planned) |
 
 ---
-
 ## 📋 Project Information
-
 * **Project Name:** Assistant Sh1v
-* **Version:** v0.2.1 Beta
-* **Development State:** Active
-* **Status:** 🚧 Ongoing Development
-
+* **Version:** v0.3.0 Beta
+* **Development State:** Active (Migrating Interface Stack)
+* **Status:** 🚧 Ongoing Architectural Shift
 ---
-
 ## 🤝 Purpose
-This project is a long-term learning and experimentation platform focused on software architecture, GUI development, concurrency, AI integration, and automation systems.
-
+This project is a long-term learning and experimentation platform focused on software architecture, modern frontend frameworks, native desktop compilation, concurrency, and automation systems.
 *Built by Shivam Nagar*
-
 > *"Learning by building, improving with every version."*
